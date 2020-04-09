@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fav Programming languages</title>
+    <link href="{% static "tinymce/css/prism.css" %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">  
+</head>
+<body>
+    <section id="main-card">
+        <div class="container">
+            {% if articles %}
+            {% for article in articles %}
+            <div class="card-wrap card-1">
+                <div class="card-info">
+                    <h1 class="card-title">{{article.title}}</h1>
+                    <p class="card-para">
+                        {{article.description|safe}}
+                    </p>
+                </div>
+                <div class="card-img-content">
+                    <div class="card-img-wrapper">
+                        <img class="card-img" src="{{article.image.url}}" alt="succulents">
+                    </div>
+                    <div class="card-img-bg"></div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+                <div class="no-content">
+                    <p>No Content Available</p>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+    <script src="{% static "tinymce/js/prism.js" %}"></script>
+    <script src=" {% static 'js/main.js' %}"></script>
+</body>
+</html>
